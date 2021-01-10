@@ -3,11 +3,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.LoginScreenController">
    <children>
@@ -67,11 +68,18 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="numberField" layoutX="221.0" layoutY="259.0" prefHeight="35.0" prefWidth="300.0" promptText="Numer telefonu" />
+            <TextField fx:id="numberField" layoutX="221.0" layoutY="259.0" prefHeight="35.0" prefWidth="300.0" promptText="Numer telefonu (brak dla specjalisty oraz dyrektora)" />
             <TextField fx:id="loginField" layoutX="221.0" layoutY="315.0" prefHeight="35.0" prefWidth="300.0" promptText="Login" />
             <PasswordField fx:id="passField" layoutX="221.0" layoutY="369.0" prefHeight="35.0" prefWidth="300.0" promptText="Haslo" />
             <Button layoutX="271.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#loginAccount" prefHeight="40.0" prefWidth="200.0" text="Zaloguj sie" />
             <Button layoutX="271.0" layoutY="567.0" mnemonicParsing="false" onMouseClicked="#createAccount" prefHeight="40.0" prefWidth="200.0" text="Utwórz konto" />
+            <RadioButton fx:id="patientBtn" layoutX="221.0" layoutY="417.0" mnemonicParsing="false" selected="true" text="Pacjent">
+               <toggleGroup>
+                  <ToggleGroup fx:id="role" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="specialistBtn" layoutX="327.0" layoutY="417.0" mnemonicParsing="false" text="Specjalista" toggleGroup="$role" />
+            <RadioButton fx:id="managerBtn" layoutX="445.0" layoutY="417.0" mnemonicParsing="false" text="Dyrektor" toggleGroup="$role" />
          </children>
       </Pane>
    </children>

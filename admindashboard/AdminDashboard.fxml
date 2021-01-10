@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admindashboard.AdminDashboardController">
+   <children>
+      <Pane prefHeight="100.0" prefWidth="900.0" style="-fx-background-color: #00c5e3;">
+         <children>
+            <Label layoutX="24.0" layoutY="23.0" text="Witaj, ">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <Label fx:id="nameLabel" layoutX="134.0" layoutY="23.0" prefHeight="58.0" prefWidth="450.0" text="imienazwisko">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <Button layoutX="786.0" layoutY="11.0" mnemonicParsing="false" onMouseClicked="#logout" text="Wyloguj sie" />
+         </children>
+      </Pane>
+      <Pane layoutY="100.0" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: #00c5e3;">
+         <children>
+            <Button layoutY="55.0" mnemonicParsing="false" onMouseClicked="#Information" prefHeight="40.0" prefWidth="250.0" text="Dane o placówce" />
+            <Button layoutY="95.0" mnemonicParsing="false" onMouseClicked="#addSpecialist" prefHeight="40.0" prefWidth="250.0" text="Dodaj Specjalistę" />
+            <Button layoutY="135.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" text="Usuń Specjalistę" />
+         </children>
+      </Pane>
+      <Pane fx:id="mainArea" layoutX="250.0" layoutY="100.0" prefHeight="600.0" prefWidth="650.0" />
+   </children>
+</AnchorPane>

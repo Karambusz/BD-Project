@@ -56,6 +56,9 @@ public class CreateAccountController implements Initializable {
             pst.setString(6,pass);
 
             pst.execute();
+
+            con.close();
+            pst.close();
             return true;
 
         } catch (SQLException e) {
@@ -67,11 +70,17 @@ public class CreateAccountController implements Initializable {
     public void newAccount(MouseEvent event) throws IOException{
         String name = nameField.getText();
         String surname = surnameField.getText();
-        int age = Integer.parseInt(ageField.getText());
+        int age = 0;
+        try {
+            age = Integer.parseInt(ageField.getText());
+        } catch (NumberFormatException e) {
+            AlertBox.errorAlert("Brak tekstu w polu 'Wiek'!", "Wpisz wiek!");
+        }
         String number = numberField.getText();
         String login = loginField.getText();
         String pass = passField.getText();
-        if (CheckTextField.chechFullnameField(nameField) && CheckTextField.chechFullnameField(surnameField) && CheckTextField.chechAgeField(ageField) && CheckTextField.chechNumberField(numberField)) {
+        System.out.println("Wiek = " + age);
+        if (CheckTextField.checkFullnameField(nameField) && CheckTextField.checkFullnameField(surnameField) && CheckTextField.checkAgeField(ageField) && CheckTextField.checkNumberField(numberField) && CheckTextField.checkLogin(loginField) && CheckTextField.checkPass(passField)) {
             if (createPatient(name, surname, age, number, login, pass)) {
                 AlertBox.infoAlert("Konto utworzone", "Konto utworzone.", "Twoje konto zostało pomyślnie utworzone. Możesz zalogować się za pomocą numeru telefonu, logina i hasła");
             }
