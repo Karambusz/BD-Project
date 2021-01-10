@@ -5,13 +5,10 @@ import changescreen.ChangeScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import login.LoginScreenController;
 
 import java.io.IOException;
@@ -38,13 +35,11 @@ public class AdminDashboardController implements Initializable {
             con = DBManagment.connect();
             String sql = "select * from dyrektor where id_dyrektor=?;";
             pst = con.prepareStatement(sql);
-            pst.setInt(1, Integer.parseInt(LoginScreenController.acc));
+            pst.setInt(1, LoginScreenController.acc);
             res = pst.executeQuery();
 
             if(res.next()) {
-                StringBuffer tmp = new StringBuffer();
-                tmp.append(res.getString("imie")).append(" ").append(res.getString("nazwisko"));
-                nameLabel.setText(tmp.toString());
+                nameLabel.setText(res.getString("imie") + " " + res.getString("nazwisko"));
                 idhospital = Integer.parseInt(res.getString("id_placowka"));
             }
             con.close();

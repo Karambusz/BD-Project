@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="patientdashboard.InformationScreenController">
+   <children>
+      <Label layoutX="239.0" layoutY="46.0" text="Moje dane">
+         <font>
+            <Font name="Impact" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="77.0" layoutY="103.0" text="Imie">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="54.0" layoutY="139.0" text="Nazwisko">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="name" layoutX="187.0" layoutY="106.0" prefHeight="24.0" prefWidth="250.0" text="Default">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="surname" layoutX="187.0" layoutY="142.0" prefHeight="24.0" prefWidth="250.0" text="Default">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="73.0" layoutY="176.0" text="Wiek">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="age" layoutX="186.0" layoutY="179.0" prefHeight="24.0" prefWidth="250.0" text="Default">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="216.0" text="Numer telefonu">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="phoneNumber" layoutX="186.0" layoutY="219.0" prefHeight="24.0" prefWidth="250.0" text="Default">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="189.0" layoutY="249.0" text="Historia choroby">
+         <font>
+            <Font name="Impact" size="40.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

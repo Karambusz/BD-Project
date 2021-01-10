@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 
 public class LoginScreenController implements Initializable {
     public static Stage myStage = null;
-    public static String acc;
+    public static int acc;
     Connection con = null;
     PreparedStatement pst = null;
     ResultSet res = null;
@@ -120,11 +120,46 @@ public class LoginScreenController implements Initializable {
 //                stage.setResizable(false);
 //                stage.show();
 //                this.myStage = stage;
-                screen.loadScreen("/patientdashboard/PatientDashboard.fxml", event, myStage);
+                try {
+                    con = DBManagment.connect();
+                    String sql = "select * from pacjent where nr_telefonu=?;";
+                    pst = con.prepareStatement(sql);
+                    pst.setString(1, numberField.getText());
+                    res = pst.executeQuery();
+
+                    if (res.next()) {
+                        acc = res.getInt("id_pacjent");
+                        System.out.println(acc);
+                    }
+                    con.close();
+                    pst.close();
+                    res.close();
+                    screen.loadScreen("/patientdashboard/PatientDashboard.fxml", event, myStage);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
         } else if (specialistBtn.isSelected()) {
             if (checkSpecialitLoginData(login, pass)) {
-                screen.loadScreen("/specialistdashboard/SpecialistDashboard.fxml", event, myStage);
+                try {
+                    con = DBManagment.connect();
+                    String sql = "select * from dane_specjalista where login=? and haslo=?;";
+                    pst = con.prepareStatement(sql);
+                    pst.setString(1, loginField.getText());
+                    pst.setString(2, passField.getText());
+                    res = pst.executeQuery();
+
+                    if (res.next()) {
+                        acc = res.getInt("id_specjalista");
+                        System.out.println(acc);
+                    }
+                    con.close();
+                    pst.close();
+                    res.close();
+                    screen.loadScreen("/specialistdashboard/SpecialistDashboard.fxml", event, myStage);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
         } else if (managerBtn.isSelected()) {
             if (checkManagerLoginData(login, pass)) {
@@ -137,7 +172,7 @@ public class LoginScreenController implements Initializable {
                     res = pst.executeQuery();
 
                     if (res.next()) {
-                        acc = res.getString("id_dyrektor");
+                        acc = res.getInt("id_dyrektor");
                         System.out.println(acc);
                     }
                     con.close();
@@ -145,7 +180,7 @@ public class LoginScreenController implements Initializable {
                     res.close();
                     screen.loadScreen("/admindashboard/AdminDashboard.fxml", event, myStage);
                 } catch (Exception e) {
-
+                    System.out.println(e.getMessage());
                 }
 
             }

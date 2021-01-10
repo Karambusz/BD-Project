@@ -40,11 +40,11 @@ public class InstitutionScreenController implements Initializable {
     private TableColumn<Specialist, Integer> price;
 
     private void setData() {
-        name.setCellValueFactory(new PropertyValueFactory<Specialist, String>("name"));
-        surname.setCellValueFactory(new PropertyValueFactory<Specialist, String>("surname"));
-        specialization.setCellValueFactory(new PropertyValueFactory<Specialist, String>("specialization"));
-        office.setCellValueFactory(new PropertyValueFactory<Specialist, Integer>("office"));
-        price.setCellValueFactory(new PropertyValueFactory<Specialist, Integer>("price"));
+        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        surname.setCellValueFactory(new PropertyValueFactory<>("surname"));
+        specialization.setCellValueFactory(new PropertyValueFactory<>("specialization"));
+        office.setCellValueFactory(new PropertyValueFactory<>("office"));
+        price.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         ObservableList<Specialist> list = FXCollections.observableArrayList();
         try {
@@ -62,7 +62,7 @@ public class InstitutionScreenController implements Initializable {
             pst.close();
             res.close();
 
-            con = DBManagment.connect();
+
             String sql1 = "SELECT * FROM informacjaspecjalista inf, dyrektor d WHERE inf.id_placowka = d.id_placowka and d.id_dyrektor = " + LoginScreenController.acc +";";
             pst = con.prepareStatement(sql1);
             res = pst.executeQuery();
