@@ -11,11 +11,11 @@
       <Label layoutX="436.0" layoutY="40.0" text="Pacjent" />
       <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="900.0" style="-fx-background-color: #424B6C;" />
       <Button layoutX="796.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#logout" text="Wyloguj sie" />
-      <Pane layoutY="99.0" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: #424B6C;;">
+      <Pane layoutY="99.0" prefHeight="600.0" prefWidth="150.0" style="-fx-background-color: #424B6C;;">
          <children>
-            <Button layoutY="55.0" mnemonicParsing="false" onMouseClicked="#Information" prefHeight="40.0" prefWidth="250.0" text="Moje dane" />
-            <Button layoutY="95.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" text="Płaćówki" />
-            <Button layoutY="135.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" text="Specjaliści" />
+            <Button mnemonicParsing="false" onMouseClicked="#Information" prefHeight="40.0" prefWidth="150.0" text="Moje dane" />
+            <Button layoutY="40.0" mnemonicParsing="false" onMouseClicked="#Hospitals" prefHeight="40.0" prefWidth="150.0" text="Płaćówki" />
+            <Button layoutY="80.0" mnemonicParsing="false" onMouseClicked="#Specialists" prefHeight="40.0" prefWidth="150.0" text="Specjaliści" />
          </children>
       </Pane>
       <Label layoutX="34.0" layoutY="33.0" text="Witaj, " textFill="WHITE">
@@ -28,6 +28,6 @@
             <Font size="40.0" />
          </font>
       </Label>
-      <Pane fx:id="mainArea" layoutX="250.0" layoutY="99.0" prefHeight="600.0" prefWidth="650.0" />
+      <Pane fx:id="mainArea" layoutX="150.0" layoutY="99.0" prefHeight="600.0" prefWidth="750.0" />
    </children>
 </AnchorPane>

@@ -128,71 +128,64 @@ public class AddSpecialistController implements Initializable {
                         pst.close();
                         res.close();
                         if(monday.isSelected()) {
-                            String sql = "INSERT INTO plan_specjalisty (id_specjalista, id_dzien, rezerwacja) values (?, ? ,?);";
+                            String sql = "INSERT INTO plan_specjalisty (id_specjalista, id_dzien) values (?, ? );";
                             pst = con.prepareStatement(sql);
                             pst.setInt(1, idSpecialist);
                             pst.setInt(2, 1);
-                            pst.setBoolean(3, false);
                             pst.executeUpdate();
                             System.out.println("monday");
                             pst.close();
                         }
                         if(tuesday.isSelected()) {
-                            String sql = "INSERT INTO plan_specjalisty (id_specjalista, id_dzien, rezerwacja) values (?, ? ,?);";
+                            String sql = "INSERT INTO plan_specjalisty (id_specjalista, id_dzien) values (?, ? );";
                             pst = con.prepareStatement(sql);
                             pst.setInt(1, idSpecialist);
                             pst.setInt(2, 2);
-                            pst.setBoolean(3, false);
                             pst.executeUpdate();
                             System.out.println("tuesday");
                             pst.close();
                         }
                         if(wednesday.isSelected()) {
-                            String sql = "INSERT INTO plan_specjalisty (id_specjalista, id_dzien, rezerwacja) values (?, ? ,?);";
+                            String sql = "INSERT INTO plan_specjalisty (id_specjalista, id_dzien) values (?, ?);";
                             pst = con.prepareStatement(sql);
                             pst.setInt(1, idSpecialist);
                             pst.setInt(2, 3);
-                            pst.setBoolean(3, false);
                             pst.executeUpdate();
                             System.out.println("wednesday");
                             pst.close();
                         }
                         if(thursday.isSelected()) {
-                            String sql = "INSERT INTO plan_specjalisty (id_specjalista, id_dzien, rezerwacja) values (?, ? ,?);";
+                            String sql = "INSERT INTO plan_specjalisty (id_specjalista, id_dzien) values (?, ? );";
                             pst = con.prepareStatement(sql);
                             pst.setInt(1, idSpecialist);
                             pst.setInt(2, 4);
-                            pst.setBoolean(3, false);
                             pst.executeUpdate();
                             System.out.println("thursday");
                             pst.close();
                         }
                         if(friday.isSelected()) {
-                            String sql = "INSERT INTO plan_specjalisty (id_specjalista, id_dzien, rezerwacja) values (?, ? ,?);";
+                            String sql = "INSERT INTO plan_specjalisty (id_specjalista, id_dzien) values (?, ? );";
                             pst = con.prepareStatement(sql);
                             pst.setInt(1, idSpecialist);
                             pst.setInt(2, 5);
-                            pst.setBoolean(3, false);
                             pst.executeUpdate();
                             System.out.println("friday");
                             pst.close();
                         }
                         if(saturday.isSelected()) {
-                            String sql = "INSERT INTO plan_specjalisty (id_specjalista, id_dzien, rezerwacja) values (?, ? ,?);";
+                            String sql = "INSERT INTO plan_specjalisty (id_specjalista, id_dzien) values (?, ?);";
                             pst = con.prepareStatement(sql);
                             pst.setInt(1, idSpecialist);
                             pst.setInt(2, 6);
-                            pst.setBoolean(3, false);
                             pst.executeUpdate();
                             System.out.println("saturday");
                             pst.close();
                         }
                         if(sunday.isSelected()) {
-                            String sql = "INSERT INTO plan_specjalisty (id_specjalista, id_dzien, rezerwacja) values (?, ? ,?);";
+                            String sql = "INSERT INTO plan_specjalisty (id_specjalista, id_dzien) values (?, ?);";
                             pst = con.prepareStatement(sql);
                             pst.setInt(1, idSpecialist);
                             pst.setInt(2, 7);
-                            pst.setBoolean(3, false);
                             pst.executeUpdate();
                             System.out.println("sunday");
                             pst.close();
@@ -214,6 +207,7 @@ public class AddSpecialistController implements Initializable {
             }
 
         } catch (Exception e) {
+            AlertBox.errorAlert("Specjalista nie został dodany do bazy", "Wybierz specjalizację oraz numer gabinetu.");
             System.out.println(e.getMessage());
         }
     }

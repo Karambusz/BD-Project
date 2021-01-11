@@ -25,9 +25,9 @@
       </Pane>
       <Pane layoutY="100.0" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: #00c5e3;">
          <children>
-            <Button layoutY="55.0" mnemonicParsing="false" onMouseClicked="#Information" prefHeight="40.0" prefWidth="250.0" text="Dane o placówce" />
-            <Button layoutY="95.0" mnemonicParsing="false" onMouseClicked="#addSpecialist" prefHeight="40.0" prefWidth="250.0" text="Dodaj Specjalistę" />
-            <Button layoutY="135.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" text="Usuń Specjalistę" />
+            <Button mnemonicParsing="false" onMouseClicked="#Information" prefHeight="40.0" prefWidth="250.0" text="Dane o placówce" />
+            <Button layoutY="40.0" mnemonicParsing="false" onMouseClicked="#addSpecialist" prefHeight="40.0" prefWidth="250.0" text="Dodaj Specjalistę" />
+            <Button layoutY="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" text="Usuń Specjalistę" />
          </children>
       </Pane>
       <Pane fx:id="mainArea" layoutX="250.0" layoutY="100.0" prefHeight="600.0" prefWidth="650.0" />

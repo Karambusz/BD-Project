@@ -63,6 +63,20 @@ public class PatientDashboardController implements Initializable {
         mainArea.getChildren().addAll(fxml);
     }
 
+    @FXML
+    private void Hospitals(MouseEvent event) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("HospitalScreen.fxml"));
+        mainArea.getChildren().removeAll();
+        mainArea.getChildren().addAll(fxml);
+    }
+
+    @FXML
+    private void Specialists(MouseEvent event) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("SpecialistScreen.fxml"));
+        mainArea.getChildren().removeAll();
+        mainArea.getChildren().addAll(fxml);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setData();
