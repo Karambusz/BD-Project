@@ -11,6 +11,16 @@ public class Specialist {
     private String street;
     private int number;
 
+    public Specialist(String name, String surname, String specialization,  String street, int office, int price, String days) {
+        this.name = name;
+        this.surname = surname;
+        this.specialization = specialization;
+        this.street = street;
+        this.office = office;
+        this.price = price;
+        this.days = days;
+    }
+
     public Specialist(String name, String surname, String city, String street, int number, int office, int price) {
         this.name = name;
         this.surname = surname;
@@ -30,6 +40,8 @@ public class Specialist {
         this.price = price;
         this.days = days;
     }
+
+
 
     public Specialist(String name, String surname, String specialization, int office, int price) {
         this.name = name;
@@ -108,4 +120,5 @@ public class Specialist {
     public void setNumber(int number) {
         this.number = number;
     }
+
 }

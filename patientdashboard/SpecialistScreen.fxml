@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <ScrollPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="patientdashboard.SpecialistScreenController">
    <content>
       <AnchorPane prefHeight="600.0" prefWidth="750.0">
@@ -40,7 +39,7 @@
               </columns>
             </TableView>
             <DatePicker fx:id="dob" layoutX="278.0" layoutY="415.0" />
-            <Button layoutX="338.0" layoutY="456.0" mnemonicParsing="false" text="Zarezerwuj" />
+            <Button layoutX="338.0" layoutY="456.0" mnemonicParsing="false" onMouseClicked="#reserve" text="Zarezerwuj" />
          </children>
       </AnchorPane>
    </content>

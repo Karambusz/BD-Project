@@ -10,13 +10,17 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import login.LoginScreenController;
 import users.Specialist;
 
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class HospitalScreenController implements Initializable {
@@ -76,6 +80,7 @@ public class HospitalScreenController implements Initializable {
         ObservableList<Specialist> list = FXCollections.observableArrayList();
         try {
             if (hospitalsList.getSelectionModel().getSelectedItem() == null) {
+                dob.setDisable(true);
                 throw new Exception();
             }
             String [] tmp = hospitalsList.getSelectionModel().getSelectedItem().split(",");
@@ -111,15 +116,100 @@ public class HospitalScreenController implements Initializable {
                 text.wrappingWidthProperty().bind(days.widthProperty());
                 return cell;
             });
+            dob.setDisable(false);
         }catch (Exception e) {
             AlertBox.errorAlert("Bląd", e.getMessage());
         }
         specialistTable.setItems(list);
+
+    }
+
+    @FXML
+    private void reserve(MouseEvent event) {
+        try {
+            DateTimeFormatter dayOfWeekFormatter = DateTimeFormatter.ofPattern("EEE", Locale.ENGLISH);
+            LocalDate date = LocalDate.of(dob.getValue().getYear(), dob.getValue().getMonth(), dob.getValue().getDayOfMonth());
+
+            int dayOfReservation = PatientDashboardController.convertDay(date.format(dayOfWeekFormatter));
+            System.out.println(dayOfReservation);
+            ObservableList<Specialist> picked;
+            picked = specialistTable.getSelectionModel().getSelectedItems();
+
+            String sName = picked.get(0).getName();
+            String sSurname = picked.get(0).getSurname();
+            String sSpecialization = picked.get(0).getSpecialization();
+            int sOffice = picked.get(0).getOffice();
+            int sPrice = picked.get(0).getPrice();
+
+
+            int sId = 0;
+            con = DBManagment.connect();
+            String sql = "SELECT * from informacjaSpecjalista where imie=? and nazwisko=? and specjalizacja=? and cena_wizyty=? and id_gabinet=?;";
+            pst = con.prepareStatement(sql);
+            pst.setString(1, sName);
+            pst.setString(2, sSurname);
+            pst.setString(3, sSpecialization);
+            pst.setInt(4, sPrice);
+            pst.setInt(5, sOffice);
+            res = pst.executeQuery();
+            if(res.next()) {
+                sId = res.getInt("id_specjalista");
+            }
+            pst.close();
+            res.close();
+
+            System.out.println(sName + " " + sSurname + " " + " " + sSpecialization + " " + sOffice + " " + sPrice + " " + sId + " " + dob.getValue().toString());
+
+            String sql1 = "select * from plan_specjalisty where id_specjalista=? and id_dzien=?";
+            pst = con.prepareStatement(sql1);
+            pst.setInt(1, sId);
+            pst.setInt(2, dayOfReservation);
+            res = pst.executeQuery();
+            if (res.next()) {
+                int idVisit = 0;
+                String sql2 = "insert into wizyta (kod_wizyty) values (?);";
+                pst = con.prepareStatement(sql2);
+                pst.setString(1, sName+sSurname+sSpecialization+dob.getValue().toString());
+                int in = pst.executeUpdate();
+                if (in > 0) {
+                    String sql3 = "select * from wizyta";
+                    pst = con.prepareStatement(sql3);
+                    res1 = pst.executeQuery();
+                    if (res1.next()) {
+                        idVisit = res1.getInt("id_wizyta");
+                    }
+                    pst.close();
+                    res1.close();
+                }
+                pst.close();
+                String sql4 = "insert into pacjent_specjalista (id_wizyta, id_specjalista, id_pacjent, data) values (?, ? ,? , ?)";
+                pst = con.prepareStatement(sql4);
+                pst.setInt(1, idVisit);
+                pst.setInt(2, sId);
+                pst.setInt(3, LoginScreenController.acc);
+                pst.setString(4, dob.getValue().toString());
+                pst.executeUpdate();
+                System.out.println("TRUUUUE");
+                AlertBox.infoAlert("Rezerwacja.", "Termin został zarezerwowany. Cena wizyty - " + sPrice + " zl", "Możesz sprawdzić termin w swoich rezerwacjach.");
+                pst.close();
+            } else {
+                AlertBox.errorAlert("Bląd", "Specjalista nie jest dostępny w tym dniu. Wybierz inny dzień");
+                System.out.println("FALSE");
+            }
+            con.close();
+            pst.close();
+            res.close();
+        } catch (NullPointerException e) {
+            AlertBox.errorAlert("Bląd", "Brak wybranej daty lub specjalisty");
+        } catch (SQLException e) {
+            AlertBox.errorAlert("Bląd", e.getMessage());
+        }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setData();
+        dob.setDisable(true);
         dob.setDayCellFactory(picker -> new DateCell() {
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<ScrollPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="patientdashboard.ReservationListController">
+   <content>
+      <AnchorPane prefHeight="600.0" prefWidth="750.0">
+         <children>
+            <Label layoutX="280.0" layoutY="26.0" text="Rezerwacje">
+               <font>
+                  <Font name="Impact" size="40.0" />
+               </font>
+            </Label>
+            <TableView fx:id="reservationTable" layoutX="15.0" layoutY="86.0" prefHeight="500.0" prefWidth="720.0">
+              <columns>
+                <TableColumn fx:id="name" prefWidth="88.80001640319824" text="Imię" />
+                <TableColumn fx:id="surname" prefWidth="101.5999755859375" text="Nazwisko" />
+                  <TableColumn fx:id="specialization" prefWidth="126.40003967285156" text="Specjalizacja" />
+                  <TableColumn fx:id="street" prefWidth="121.5999755859375" text="Ulica" />
+                  <TableColumn fx:id="office" prefWidth="79.20001220703125" text="Gabinet" />
+                  <TableColumn fx:id="price" prefWidth="96.800048828125" text="Cena wizyty" />
+                  <TableColumn fx:id="date" prefWidth="107.99993896484375" text="Data" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

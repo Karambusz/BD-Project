@@ -76,6 +76,40 @@ public class PatientDashboardController implements Initializable {
         mainArea.getChildren().removeAll();
         mainArea.getChildren().addAll(fxml);
     }
+    @FXML
+    private void Reservations(MouseEvent event) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("ReservationList.fxml"));
+        mainArea.getChildren().removeAll();
+        mainArea.getChildren().addAll(fxml);
+    }
+
+    public static int convertDay(String day) {
+        int res = 0;
+        switch (day) {
+            case "Mon":
+                res = 1;
+                break;
+            case "Tue":
+                res = 2;
+                break;
+            case "Wed":
+                res = 3;
+                break;
+            case "Thu":
+                res = 4;
+                break;
+            case "Fri":
+                res = 5;
+                break;
+            case "Sat":
+                res = 6;
+                break;
+            case "Sun":
+                res = 7;
+                break;
+        }
+        return res;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

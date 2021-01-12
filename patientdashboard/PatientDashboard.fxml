@@ -16,6 +16,7 @@
             <Button mnemonicParsing="false" onMouseClicked="#Information" prefHeight="40.0" prefWidth="150.0" text="Moje dane" />
             <Button layoutY="40.0" mnemonicParsing="false" onMouseClicked="#Hospitals" prefHeight="40.0" prefWidth="150.0" text="Płaćówki" />
             <Button layoutY="80.0" mnemonicParsing="false" onMouseClicked="#Specialists" prefHeight="40.0" prefWidth="150.0" text="Specjaliści" />
+            <Button layoutY="120.0" mnemonicParsing="false" onMouseClicked="#Reservations" prefHeight="40.0" prefWidth="150.0" text="Moje rezerwacje" />
          </children>
       </Pane>
       <Label layoutX="34.0" layoutY="33.0" text="Witaj, " textFill="WHITE">
