@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="specialistdashboard.VisitList">
+   <children>
+      <Label layoutX="251.0" layoutY="96.0" text="Wybierz pacjenta, aby dodać wpis">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="302.0" layoutY="35.0" text="Lista wizyt">
+         <font>
+            <Font name="Impact" size="40.0" />
+         </font>
+      </Label>
+      <TableView fx:id="visitTable" layoutX="12.0" layoutY="132.0" prefHeight="320.0" prefWidth="727.0">
+         <columns>
+            <TableColumn fx:id="name" prefWidth="90.0" text="Imię" />
+            <TableColumn fx:id="surname" prefWidth="90.0" text="Nazwisko" />
+            <TableColumn fx:id="age" prefWidth="48.7999267578125" text="Wiek" />
+            <TableColumn fx:id="phoneNumber" prefWidth="120.0" text="Numer telefonu" />
+            <TableColumn fx:id="date" prefWidth="103.99993896484375" text="Data" />
+            <TableColumn fx:id="diseases" prefWidth="272.79997558593755" text="Choroby" />
+         </columns>
+      </TableView>
+      <Label layoutX="320.0" layoutY="461.0" text="Wybierz chorobę">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="diseasesList" layoutX="238.0" layoutY="496.0" prefHeight="35.0" prefWidth="300.0" promptText="Choroba" />
+      <Button layoutX="263.0" layoutY="550.0" mnemonicParsing="false" onMouseClicked="#addNote" prefHeight="30.0" prefWidth="250.0" text="Dodaj wpis" />
+   </children>
+</AnchorPane>
