@@ -2,55 +2,56 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <ScrollPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="patientdashboard.InformationScreenController">
    <content>
       <AnchorPane prefHeight="600.0" prefWidth="750.0">
          <children>
-            <Label layoutX="290.0" layoutY="52.0" text="Moje dane">
+            <Label layoutX="290.0" layoutY="32.0" text="Moje dane">
                <font>
                   <Font name="Impact" size="40.0" />
                </font>
             </Label>
-            <Label layoutX="127.0" layoutY="102.0" text="Imie">
+            <Label layoutX="127.0" layoutY="82.0" text="Imie">
                <font>
                   <Font name="Impact" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="104.0" layoutY="138.0" text="Nazwisko">
+            <Label layoutX="104.0" layoutY="118.0" text="Nazwisko">
                <font>
                   <Font name="Impact" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="name" layoutX="237.0" layoutY="105.0" prefHeight="24.0" prefWidth="250.0" text="Default">
+            <Label fx:id="name" layoutX="237.0" layoutY="85.0" prefHeight="24.0" prefWidth="250.0" text="Default">
                <font>
                   <Font name="Impact" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="surname" layoutX="237.0" layoutY="141.0" prefHeight="24.0" prefWidth="250.0" text="Default">
+            <Label fx:id="surname" layoutX="237.0" layoutY="121.0" prefHeight="24.0" prefWidth="250.0" text="Default">
                <font>
                   <Font name="Impact" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="123.0" layoutY="175.0" text="Wiek">
+            <Label layoutX="123.0" layoutY="155.0" text="Wiek">
                <font>
                   <Font name="Impact" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="age" layoutX="236.0" layoutY="178.0" prefHeight="24.0" prefWidth="250.0" text="Default">
+            <Label fx:id="age" layoutX="236.0" layoutY="158.0" prefHeight="24.0" prefWidth="250.0" text="Default">
                <font>
                   <Font name="Impact" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="73.0" layoutY="215.0" text="Numer telefonu">
+            <Label layoutX="73.0" layoutY="195.0" text="Numer telefonu">
                <font>
                   <Font name="Impact" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="phoneNumber" layoutX="236.0" layoutY="218.0" prefHeight="24.0" prefWidth="250.0" text="Default">
+            <Label fx:id="phoneNumber" layoutX="236.0" layoutY="198.0" prefHeight="24.0" prefWidth="250.0" text="Default">
                <font>
                   <Font name="Impact" size="20.0" />
                </font>
@@ -60,6 +61,14 @@
                   <Font name="Impact" size="40.0" />
                </font>
             </Label>
+            <TableView fx:id="historyTable" layoutX="14.0" layoutY="296.0" prefHeight="275.0" prefWidth="720.0">
+              <columns>
+                <TableColumn fx:id="sName" prefWidth="180.0" text="Imie specjalisty" />
+                <TableColumn fx:id="sSurname" prefWidth="180.0" text="Nazwisko specjalisty" />
+                  <TableColumn fx:id="date" prefWidth="180.0" text="Data" />
+                  <TableColumn fx:id="diseases" prefWidth="180.0" text="Choroba" />
+              </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </content>

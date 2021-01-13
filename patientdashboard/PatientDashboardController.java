@@ -57,27 +57,27 @@ public class PatientDashboardController implements Initializable {
     }
 
     @FXML
-    private void Information(MouseEvent event) throws IOException {
+    private void information(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("InformationScreen.fxml"));
         mainArea.getChildren().removeAll();
         mainArea.getChildren().addAll(fxml);
     }
 
     @FXML
-    private void Hospitals(MouseEvent event) throws IOException {
+    private void hospitals(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("HospitalScreen.fxml"));
         mainArea.getChildren().removeAll();
         mainArea.getChildren().addAll(fxml);
     }
 
     @FXML
-    private void Specialists(MouseEvent event) throws IOException {
+    private void specialists(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("SpecialistScreen.fxml"));
         mainArea.getChildren().removeAll();
         mainArea.getChildren().addAll(fxml);
     }
     @FXML
-    private void Reservations(MouseEvent event) throws IOException {
+    private void reservations(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("ReservationList.fxml"));
         mainArea.getChildren().removeAll();
         mainArea.getChildren().addAll(fxml);

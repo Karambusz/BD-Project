@@ -54,11 +54,17 @@ public class SpecialistDashboardController implements Initializable {
     }
 
     @FXML
-    private void VisitList(MouseEvent event) throws IOException {
+    private void visitList(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("VisitList.fxml"));
         mainArea.getChildren().removeAll();
         mainArea.getChildren().addAll(fxml);
-        System.out.println("Click");
+    }
+
+    @FXML
+    private void changePass(MouseEvent event) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("ChangePIN.fxml"));
+        mainArea.getChildren().removeAll();
+        mainArea.getChildren().addAll(fxml);
     }
 
     public void logout(MouseEvent event) throws IOException {

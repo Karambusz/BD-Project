@@ -3,10 +3,8 @@ package checkinput;
 import alerts.AlertBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 public class CheckTextField {
 
     public static boolean checkFullnameField(TextField tmpField) {

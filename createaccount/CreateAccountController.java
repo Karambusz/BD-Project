@@ -91,6 +91,10 @@ public class CreateAccountController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        numberField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                numberField.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
     }
 }

@@ -56,7 +56,7 @@ public class AdminDashboardController implements Initializable {
 
 
     @FXML
-    private void Information(MouseEvent event) throws IOException {
+    private void information(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("InstitutionScreen.fxml"));
         mainArea.getChildren().removeAll();
         mainArea.getChildren().addAll(fxml);

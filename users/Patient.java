@@ -3,10 +3,19 @@ package users;
 public class Patient {
     private String name;
     private String surname;
+    private String specialistName;
+    private String specialistSurname;
     private int age;
     private String phoneNumber;
     private String date;
     private String diseases;
+
+    public Patient(String specialistName, String specialistSurname, String date, String diseases) {
+        this.specialistName = specialistName;
+        this.specialistSurname = specialistSurname;
+        this.date = date;
+        this.diseases = diseases;
+    }
 
     public Patient(String name, String surname, int age, String phoneNumber, String date, String diseases) {
         this.name = name;
@@ -31,6 +40,22 @@ public class Patient {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public String getSpecialistName() {
+        return specialistName;
+    }
+
+    public void setSpecialistName(String specialistName) {
+        this.specialistName = specialistName;
+    }
+
+    public String getSpecialistSurname() {
+        return specialistSurname;
+    }
+
+    public void setSpecialistSurname(String specialistSurname) {
+        this.specialistSurname = specialistSurname;
     }
 
     public int getAge() {

@@ -1,6 +1,7 @@
 package admindashboard;
 
 import SQLManagment.DBManagment;
+import alerts.AlertBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -8,7 +9,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import login.LoginScreenController;
 import users.Specialist;
 
@@ -16,6 +19,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class InstitutionScreenController implements Initializable {
@@ -26,6 +30,8 @@ public class InstitutionScreenController implements Initializable {
     private Label city;
     @FXML
     private Label address;
+    @FXML
+    private TextField officeField;
     @FXML
     private TableView<Specialist> specialistTable;
     @FXML
@@ -78,8 +84,39 @@ public class InstitutionScreenController implements Initializable {
         specialistTable.setItems(list);
     }
 
+    @FXML
+    private void addOffice(MouseEvent event) {
+        try {
+            if(officeField.getText().equals("") || officeField.getLength() >= 9) {
+                throw new Exception();
+            }
+            con = DBManagment.connect();
+            String sql = "insert into gabinet (id_gabinet) values (?)";
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, Integer.parseInt(officeField.getText()));
+            int in = pst.executeUpdate();
+            if(in > 0) {
+                officeField.setText("");
+                AlertBox.infoAlert("Dodawanie gabinetu", "Gabinet dodany", "Gabinet został dodany do bazy");
+            }
+            con.close();
+            pst.close();
+        } catch (SQLException e) {
+            AlertBox.errorAlert("Bląd", e.getMessage());
+        }
+        catch (Exception e) {
+            AlertBox.errorAlert("Bląd", "Brak numeru albo podana zbyt duza liczba, sprobuj ponownie.");
+        }
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        officeField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                officeField.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
         setData();
     }
 }
