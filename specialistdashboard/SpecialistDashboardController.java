@@ -45,9 +45,9 @@ public class SpecialistDashboardController implements Initializable {
                 specialistName = res.getString("imie");
                 specialistSurname = res.getString("nazwisko");
             }
-            con.close();
-            pst.close();
             res.close();
+            pst.close();
+            con.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

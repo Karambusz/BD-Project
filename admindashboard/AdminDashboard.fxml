@@ -27,7 +27,7 @@
          <children>
             <Button mnemonicParsing="false" onMouseClicked="#information" prefHeight="40.0" prefWidth="250.0" text="Dane o placówce" />
             <Button layoutY="40.0" mnemonicParsing="false" onMouseClicked="#addSpecialist" prefHeight="40.0" prefWidth="250.0" text="Dodaj Specjalistę" />
-            <Button layoutY="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" text="Usuń Specjalistę" />
+            <Button layoutY="80.0" mnemonicParsing="false" onMouseClicked="#removeSpecialist" prefHeight="40.0" prefWidth="250.0" text="Usuń Specjalistę" />
          </children>
       </Pane>
       <Pane fx:id="mainArea" layoutX="250.0" layoutY="100.0" prefHeight="600.0" prefWidth="650.0" />

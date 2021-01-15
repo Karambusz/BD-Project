@@ -161,8 +161,8 @@ public class SpecialistScreenController implements Initializable {
                     if (res1.next()) {
                         idVisit = res1.getInt("id_wizyta");
                     }
-                    pst.close();
                     res1.close();
+                    pst.close();
                 }
                 pst.close();
                 String sql4 = "insert into pacjent_specjalista (id_wizyta, id_specjalista, id_pacjent, data) values (?, ? ,? , ?)";
@@ -179,14 +179,16 @@ public class SpecialistScreenController implements Initializable {
                 AlertBox.errorAlert("Bląd", "Specjalista nie jest dostępny w tym dniu. Wybierz inny dzień");
                 System.out.println("FALSE");
             }
-            con.close();
-            pst.close();
             res.close();
+            pst.close();
+            con.close();
         } catch (NullPointerException e) {
             AlertBox.errorAlert("Bląd", "Brak wybranej daty lub specjalisty");
         }
         catch (SQLException e) {
-            AlertBox.errorAlert("Bląd", e.getMessage());
+            AlertBox.errorAlert("Bląd", "Wybierz specjalizację oraz dzień");
+        } finally {
+            DBManagment.closeAll(con, res, pst);
         }
     }
 

@@ -1,8 +1,6 @@
 package SQLManagment;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DBManagment {
     private static final String url = "jdbc:postgresql://dumbo.db.elephantsql.com:5432/xwiqrbxu";
@@ -23,5 +21,21 @@ public class DBManagment {
         return conn;
     }
 
-//    public static String addPatient()
+    public static void closeAll(Connection con, ResultSet res, PreparedStatement pst) {
+        if (res != null) {
+            try {
+                res.close();
+            } catch (SQLException e) {}
+        }
+        if (pst != null) {
+            try {
+                pst.close();
+            } catch (SQLException e) {}
+        }
+        if (con != null) {
+            try {
+                con.close();
+            } catch (SQLException e) {}
+        }
+    }
 }

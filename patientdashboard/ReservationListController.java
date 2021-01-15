@@ -58,10 +58,9 @@ public class ReservationListController implements Initializable {
             while(res.next()) {
                 list.add(new Specialist(res.getString("imie"), res.getString("nazwisko"), res.getString("specjalizacja"), (res.getString("ulica") + " " + res.getInt("nr_budynku")), Integer.parseInt(res.getString("id_gabinet")), Integer.parseInt(res.getString("cena_wizyty")), res.getString("data")));
             }
-            con.close();
-            pst.close();
             res.close();
-
+            pst.close();
+            con.close();
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }

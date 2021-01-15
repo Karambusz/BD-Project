@@ -66,9 +66,10 @@ public class AddSpecialistController implements Initializable {
             while (res.next()) {
                 officeBox.getItems().add(res.getInt("id_gabinet"));
             }
-            con.close();
-            pst.close();
+
             res.close();
+            pst.close();
+            con.close();
             specialisationBox.getItems().addAll(specializeList);
         }catch (Exception e) {
             System.out.println(e.getMessage());
@@ -92,12 +93,14 @@ public class AddSpecialistController implements Initializable {
 
             pst.execute();
 
-            con.close();
             pst.close();
+            con.close();
             return true;
 
         } catch (SQLException e) {
             AlertBox.errorAlert("Specjalista nie został dodany do bazy", e.getMessage());
+        } finally {
+            DBManagment.closeAll(con, res, pst);
         }
         return false;
     }
@@ -125,8 +128,8 @@ public class AddSpecialistController implements Initializable {
                         if(res.next()) {
                             idSpecialist = res.getInt("max");
                         }
-                        pst.close();
                         res.close();
+                        pst.close();
                         if(monday.isSelected()) {
                             String sql = "INSERT INTO plan_specjalisty (id_specjalista, id_dzien) values (?, ? );";
                             pst = con.prepareStatement(sql);
@@ -190,8 +193,8 @@ public class AddSpecialistController implements Initializable {
                             System.out.println("sunday");
                             pst.close();
                         }
-                        con.close();
                         pst.close();
+                        con.close();
                         AlertBox.infoAlert("Specjalista dodany." ,"Specjalista został dodany do bazy.", "Specjalista został dodany.");
                         setData();
                     }

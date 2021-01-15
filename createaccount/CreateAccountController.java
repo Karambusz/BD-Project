@@ -26,6 +26,7 @@ import login.Main;
 public class CreateAccountController implements Initializable {
     Connection con = null;
     PreparedStatement pst = null;
+    ResultSet res = null;
     @FXML
     private TextField nameField;
     @FXML
@@ -57,12 +58,14 @@ public class CreateAccountController implements Initializable {
 
             pst.execute();
 
-            con.close();
             pst.close();
+            con.close();
             return true;
 
         } catch (SQLException e) {
             AlertBox.errorAlert("Konto nie utworzone", "Twoje konto nie zostało utworzone! Sprawdź dane i sprobuj jeszcze raz");
+        } finally {
+            DBManagment.closeAll(con, res, pst);
         }
         return false;
     }
@@ -83,8 +86,8 @@ public class CreateAccountController implements Initializable {
         if (CheckTextField.checkFullnameField(nameField) && CheckTextField.checkFullnameField(surnameField) && CheckTextField.checkAgeField(ageField) && CheckTextField.checkNumberField(numberField) && CheckTextField.checkLogin(loginField) && CheckTextField.checkPass(passField)) {
             if (createPatient(name, surname, age, number, login, pass)) {
                 AlertBox.infoAlert("Konto utworzone", "Konto utworzone.", "Twoje konto zostało pomyślnie utworzone. Możesz zalogować się za pomocą numeru telefonu, logina i hasła");
+                Main.myStage.getScene().setRoot(FXMLLoader.load(getClass().getResource("/login/LoginScreen.fxml")));
             }
-            Main.myStage.getScene().setRoot(FXMLLoader.load(getClass().getResource("/login/LoginScreen.fxml")));
         }
     }
 
@@ -94,6 +97,11 @@ public class CreateAccountController implements Initializable {
         numberField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 numberField.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+        ageField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                ageField.setText(newValue.replaceAll("[^\\d]", ""));
             }
         });
     }

@@ -55,12 +55,14 @@ public class LoginScreenController implements Initializable {
             pst.setString(3,pass);
             pst.execute();
 
-            con.close();
             pst.close();
+            con.close();
             return true;
 
         } catch (SQLException e) {
             AlertBox.errorAlert("Nie udało sie zalogować!", "Nie udało sie zalogować " + e.getMessage());
+        }  finally {
+            DBManagment.closeAll(con, res, pst);
         }
         return false;
     }
@@ -74,31 +76,35 @@ public class LoginScreenController implements Initializable {
             pst.setString(2,pass);
             pst.execute();
 
-            con.close();
             pst.close();
+            con.close();
             return true;
 
         } catch (SQLException e) {
             AlertBox.errorAlert("Nie udało sie zalogować!", "Nie udało sie zalogować " + e.getMessage());
+        } finally {
+            DBManagment.closeAll(con, res, pst);
         }
         return false;
     }
 
     public boolean checkManagerLoginData(String login, String pass) {
         try {
-            con = DBManagment.connect();
+            con= DBManagment.connect();
             String sql = "Select zalogujDyrektora(?,?);";
             pst = con.prepareStatement(sql);
             pst.setString(1,login);
             pst.setString(2,pass);
             pst.execute();
 
-            con.close();
             pst.close();
+            con.close();
             return true;
 
         } catch (SQLException e) {
             AlertBox.errorAlert("Nie udało sie zalogować!", "Nie udało sie zalogować " + e.getMessage());
+        } finally {
+            DBManagment.closeAll(con, res, pst);
         }
         return false;
     }
@@ -109,15 +115,6 @@ public class LoginScreenController implements Initializable {
         String pass = passField.getText();
         if(patientBtn.isSelected()) {
             if (checkPatientLoginData(number, login, pass)) {
-//                ((Node)event.getSource()).getScene().getWindow().hide();
-//                Parent root = FXMLLoader.load(getClass().getResource("/patientdashboard/PatientDashboard.fxml"));
-//                Scene scene = new Scene(root);
-//                Stage stage = new Stage();
-//                stage.setTitle("Obsługa przychodni specjalistycznej");
-//                stage.setScene(scene);
-//                stage.setResizable(false);
-//                stage.show();
-//                this.myStage = stage;
                 try {
                     con = DBManagment.connect();
                     String sql = "select * from pacjent where nr_telefonu=?;";
@@ -129,9 +126,9 @@ public class LoginScreenController implements Initializable {
                         acc = res.getInt("id_pacjent");
                         System.out.println(acc);
                     }
-                    con.close();
-                    pst.close();
                     res.close();
+                    pst.close();
+                    con.close();
                     screen.loadScreen("/patientdashboard/PatientDashboard.fxml", event, myStage);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
@@ -151,9 +148,9 @@ public class LoginScreenController implements Initializable {
                         acc = res.getInt("id_specjalista");
                         System.out.println(acc);
                     }
-                    con.close();
-                    pst.close();
                     res.close();
+                    pst.close();
+                    con.close();
                     screen.loadScreen("/specialistdashboard/SpecialistDashboard.fxml", event, myStage);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
@@ -173,9 +170,9 @@ public class LoginScreenController implements Initializable {
                         acc = res.getInt("id_dyrektor");
                         System.out.println(acc);
                     }
-                    con.close();
-                    pst.close();
                     res.close();
+                    pst.close();
+                    con.close();
                     screen.loadScreen("/admindashboard/AdminDashboard.fxml", event, myStage);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());

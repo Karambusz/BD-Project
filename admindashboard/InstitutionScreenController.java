@@ -65,9 +65,8 @@ public class InstitutionScreenController implements Initializable {
                 tmp.append(res.getString("ulica")).append(", ").append(res.getString("nr_budynku"));
                 address.setText(tmp.toString());
             }
-            pst.close();
             res.close();
-
+            pst.close();
 
             String sql1 = "SELECT * FROM informacjaspecjalista inf, dyrektor d WHERE inf.id_placowka = d.id_placowka and d.id_dyrektor = " + LoginScreenController.acc +";";
             pst = con.prepareStatement(sql1);
@@ -75,9 +74,9 @@ public class InstitutionScreenController implements Initializable {
             while (res.next()) {
                 list.add(new Specialist(res.getString("imie"), res.getString("nazwisko"), res.getString("specjalizacja"), Integer.parseInt(res.getString("id_gabinet")), Integer.parseInt(res.getString("cena_wizyty"))));
             }
-            con.close();
-            pst.close();
             res.close();
+            pst.close();
+            con.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -99,13 +98,15 @@ public class InstitutionScreenController implements Initializable {
                 officeField.setText("");
                 AlertBox.infoAlert("Dodawanie gabinetu", "Gabinet dodany", "Gabinet został dodany do bazy");
             }
-            con.close();
             pst.close();
+            con.close();
         } catch (SQLException e) {
             AlertBox.errorAlert("Bląd", e.getMessage());
         }
         catch (Exception e) {
             AlertBox.errorAlert("Bląd", "Brak numeru albo podana zbyt duza liczba, sprobuj ponownie.");
+        } finally {
+            DBManagment.closeAll(con, res, pst);
         }
 
     }

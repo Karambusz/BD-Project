@@ -36,7 +36,6 @@ public class PatientDashboardController implements Initializable {
             String sql = "select * from pacjent where id_pacjent=?;";
             pst = con.prepareStatement(sql);
             pst.setInt(1, LoginScreenController.acc);
-            idhistoria = LoginScreenController.acc;
             res = pst.executeQuery();
 
             if(res.next()) {
@@ -44,9 +43,17 @@ public class PatientDashboardController implements Initializable {
                 tmp.append(res.getString("imie")).append(" ").append(res.getString("nazwisko"));
                 nameLabel.setText(tmp.toString());
             }
-            con.close();
-            pst.close();
             res.close();
+            pst.close();
+
+            String sql1 = "select * from historia_choroby where id_pacjent=?";
+            pst = con.prepareStatement(sql1);
+            pst.setInt(1, LoginScreenController.acc);
+            res = pst.executeQuery();
+            if(res.next()) {
+                idhistoria = res.getInt("id_historia");
+            }
+            con.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

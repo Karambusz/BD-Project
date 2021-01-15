@@ -62,8 +62,8 @@ public class InformationScreenController implements Initializable {
                 phoneNumber.setText(res.getString("nr_telefonu"));
             }
 
-            pst.close();
             res.close();
+            pst.close();
             String sql1 = "select c.s_imie, c.s_nazwisko, c.data, c.nazwa  from chorobypacjenta c where id_historia="+PatientDashboardController.idhistoria+";";
             pst = con.prepareStatement(sql1);
             res = pst.executeQuery();
@@ -71,9 +71,9 @@ public class InformationScreenController implements Initializable {
                 System.out.println(res.getString("s_imie") + res.getString("s_nazwisko") + res.getString("data") + res.getString("nazwa"));
                 list.add(new Patient(res.getString("s_imie"), res.getString("s_nazwisko"), res.getString("data"), res.getString("nazwa")));
             }
-            con.close();
-            pst.close();
             res.close();
+            pst.close();
+            con.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

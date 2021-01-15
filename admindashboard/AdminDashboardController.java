@@ -42,9 +42,9 @@ public class AdminDashboardController implements Initializable {
                 nameLabel.setText(res.getString("imie") + " " + res.getString("nazwisko"));
                 idhospital = Integer.parseInt(res.getString("id_placowka"));
             }
-            con.close();
-            pst.close();
             res.close();
+            pst.close();
+            con.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -65,6 +65,13 @@ public class AdminDashboardController implements Initializable {
     @FXML
     private void addSpecialist(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("AddSpecialist.fxml"));
+        mainArea.getChildren().removeAll();
+        mainArea.getChildren().addAll(fxml);
+    }
+
+    @FXML
+    private void removeSpecialist(MouseEvent event) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("RemoveSpecialist.fxml"));
         mainArea.getChildren().removeAll();
         mainArea.getChildren().addAll(fxml);
     }

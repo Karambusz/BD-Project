@@ -74,12 +74,12 @@ public class VisitList implements Initializable {
                     disease.append(res1.getString("nazwa")).append(" ");
                 }
                 list.add(new Patient(res.getString("imie"), res.getString("nazwisko"), res.getInt("wiek"), res.getString("nr_telefonu"), res.getString("data"), disease.toString()));
-                pst.close();
                 res1.close();
+                pst.close();
             }
-            con.close();
-            pst.close();
             res.close();
+            pst.close();
+            con.close();
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -96,9 +96,9 @@ public class VisitList implements Initializable {
             while (res.next()) {
                 diseasesList.getItems().add(res.getString("nazwa"));
             }
-            con.close();
-            pst.close();
             res.close();
+            pst.close();
+            con.close();
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -132,8 +132,8 @@ public class VisitList implements Initializable {
             if (res.next()) {
                 idHisory = res.getInt("id_historia");
             }
-            pst.close();
             res.close();
+            pst.close();
 
             System.out.println("Historia = " + idHisory + " choroba = " + idDisease + " " + SpecialistDashboardController.specialistName + " " + SpecialistDashboardController.specialistSurname);
             String sql1 = "select * from choroba where nazwa = ?";
@@ -143,8 +143,8 @@ public class VisitList implements Initializable {
             if(res.next()) {
                 idDisease = res.getInt("id_choroba");
             }
-            pst.close();
             res.close();
+            pst.close();
             System.out.println("Historia = " + idHisory + " choroba = " + idDisease + " " + SpecialistDashboardController.specialistName + " " + SpecialistDashboardController.specialistSurname);
             String sql2 = "insert into  choroba_historia (id_historia, id_choroba, s_imie, s_nazwisko, data) values (?, ? , ? , ?, ?);";
             pst = con.prepareStatement(sql2);
@@ -155,9 +155,8 @@ public class VisitList implements Initializable {
             pst.setString(5, pDate);
             pst.executeUpdate();
 
-            con.close();
             pst.close();
-
+            con.close();
             setData();
             AlertBox.infoAlert("Wpis.", "Wpis został dodany", "Wpis został dodany");
         }catch (SQLException e) {
@@ -165,7 +164,8 @@ public class VisitList implements Initializable {
         }catch (Exception e) {
             System.out.println(e.getMessage());
             AlertBox.errorAlert("Nie udało sie dodać wpisu.", "Brak wybranej choroby lub pacjenta. Wybierz chorobę oraz pacjenta aby dodać wpis.");
-
+        } finally {
+            DBManagment.closeAll(con, res, pst);
         }
     }
 

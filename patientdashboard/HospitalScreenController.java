@@ -60,9 +60,9 @@ public class HospitalScreenController implements Initializable {
                 String tmp = res.getString("mejscowosc") + "," + res.getString("ulica")+","+res.getInt("nr_budynku");
                 hospitalsList.getItems().add(tmp);
             }
-            con.close();
-            pst.close();
             res.close();
+            pst.close();
+            con.close();
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -101,12 +101,12 @@ public class HospitalScreenController implements Initializable {
                     d.append(res1.getString("dzien")).append(" ");
                 }
                 list.add(new Specialist(res.getString("imie"), res.getString("nazwisko"), res.getString("specjalizacja"), Integer.parseInt(res.getString("id_gabinet")), Integer.parseInt(res.getString("cena_wizyty")), d.toString()));
-                pst.close();
                 res1.close();
+                pst.close();
             }
-            con.close();
-            pst.close();
             res.close();
+            pst.close();
+            con.close();
             days.setCellFactory(param -> {
                 TableCell<Specialist, String> cell = new TableCell<>();
                 Text text = new Text();
@@ -118,7 +118,7 @@ public class HospitalScreenController implements Initializable {
             });
             dob.setDisable(false);
         }catch (Exception e) {
-            AlertBox.errorAlert("Bląd", e.getMessage());
+            AlertBox.errorAlert("Bląd", "Wybierz placówkę z listy");
         }
         specialistTable.setItems(list);
 
@@ -155,8 +155,8 @@ public class HospitalScreenController implements Initializable {
             if(res.next()) {
                 sId = res.getInt("id_specjalista");
             }
-            pst.close();
             res.close();
+            pst.close();
 
             System.out.println(sName + " " + sSurname + " " + " " + sSpecialization + " " + sOffice + " " + sPrice + " " + sId + " " + dob.getValue().toString());
 
@@ -178,8 +178,8 @@ public class HospitalScreenController implements Initializable {
                     if (res1.next()) {
                         idVisit = res1.getInt("id_wizyta");
                     }
-                    pst.close();
                     res1.close();
+                    pst.close();
                 }
                 pst.close();
                 String sql4 = "insert into pacjent_specjalista (id_wizyta, id_specjalista, id_pacjent, data) values (?, ? ,? , ?)";
@@ -196,13 +196,15 @@ public class HospitalScreenController implements Initializable {
                 AlertBox.errorAlert("Bląd", "Specjalista nie jest dostępny w tym dniu. Wybierz inny dzień");
                 System.out.println("FALSE");
             }
-            con.close();
-            pst.close();
             res.close();
+            pst.close();
+            con.close();
         } catch (NullPointerException e) {
             AlertBox.errorAlert("Bląd", "Brak wybranej daty lub specjalisty");
         } catch (SQLException e) {
             AlertBox.errorAlert("Bląd", e.getMessage());
+        } finally {
+            DBManagment.closeAll(con, res, pst);
         }
     }
 

@@ -43,6 +43,7 @@ public class ChangePINController implements Initializable {
                     pst.executeUpdate();
 
                     AlertBox.infoAlert("Zmiana hasła", "Hasło zostało pomyślnie zmienione","Twoje hasło zostało zmienione, teraz musisz zalogować się ponownie przy użyciu nowego hasła");
+                    pst.close();
                     oldPin.setText("");
                     newPin.setText("");
                     retypePin.setText("");
@@ -56,6 +57,9 @@ public class ChangePINController implements Initializable {
             } else {
                 AlertBox.errorAlert("Bład", "Hasło nie zostało zmienione, sprawdź dane i sprobuj ponownie.");
             }
+            res.close();
+            pst.close();
+            con.close();
         }catch (Exception e) {
             e.printStackTrace();
         }
