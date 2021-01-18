@@ -22,7 +22,7 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutX="796.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#logout" text="Wyloguj sie" />
+      <Button layoutX="796.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#logout" text="Wyloguj się" />
       <Pane layoutY="100.0" prefHeight="600.0" prefWidth="150.0" style="-fx-background-color: #06cc3b;">
          <children>
             <Button mnemonicParsing="false" onMouseClicked="#visitList" prefHeight="40.0" prefWidth="150.0" text="Lista wizyt" />

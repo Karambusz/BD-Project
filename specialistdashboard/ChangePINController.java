@@ -12,6 +12,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ChangePINController implements Initializable {
@@ -28,6 +29,10 @@ public class ChangePINController implements Initializable {
 
     SpecialistDashboardController dc = new SpecialistDashboardController();
 
+    /**
+     * Metoda, która pozwala zmienić hasło
+     *      @see Exception
+     */
     public void changePass(MouseEvent event) {
         try {
             con = DBManagment.connect();

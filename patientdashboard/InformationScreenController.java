@@ -42,6 +42,10 @@ public class InformationScreenController implements Initializable {
     @FXML
     private TableColumn<Patient, String> diseases;
 
+    /**
+     * Metoda, ustawiająca początkowe dane na ekranie
+     * @see Exception
+     */
     private void setData() {
         sName.setCellValueFactory(new PropertyValueFactory<>("specialistName"));
         sSurname.setCellValueFactory(new PropertyValueFactory<>("specialistSurname"));
@@ -80,6 +84,11 @@ public class InformationScreenController implements Initializable {
         historyTable.setItems(list);
     }
 
+    /**
+     * Jest to główna metoda wykorzystująca metodę setData()
+     * @param location [URL]
+     * @param resources [ResourceBundle]
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setData();

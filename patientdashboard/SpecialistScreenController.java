@@ -51,6 +51,10 @@ public class SpecialistScreenController implements Initializable {
     @FXML
     private DatePicker dob;
 
+    /**
+     * Metoda, ustawiająca początkowe dane na ekranie
+     * @see Exception
+     */
     private void setData() {
         ObservableList<String> specializeList = FXCollections.observableArrayList("Psychoterapeuta", "Diagnostyk", "Neurolog", "Dermatolog", "Laryngolog");
         try {
@@ -70,6 +74,11 @@ public class SpecialistScreenController implements Initializable {
         specialisationBox.getItems().addAll(specializeList);
     }
 
+    /**
+     * Metoda, która generuje listę specjalistów w zalezności od wybranej specjalizacji oraz dnia pracy
+     *      @param event [MouseEvent]    -   zdarzenie
+     *      @see Exception
+     */
     @FXML
     private void searchSpecialist(MouseEvent event) {
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -107,6 +116,11 @@ public class SpecialistScreenController implements Initializable {
         specialistTable.setItems(list);
     }
 
+    /**
+     * Metoda, która pozwala zarezerwować wizytę u wybranego specjalisty
+     *      @see NullPointerException
+     *      @see SQLException
+     */
     @FXML
     private void reserve(MouseEvent event) {
         try {
@@ -193,6 +207,11 @@ public class SpecialistScreenController implements Initializable {
     }
 
 
+    /**
+     * Jest to główna metoda wykorzystująca metodę setData() oraz synhronizuje kalendarz z lokalnym czasem
+     * @param location [URL]
+     * @param resources [ResourceBundle]
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         dob.setDisable(true);

@@ -10,13 +10,29 @@ public class Patient {
     private String date;
     private String diseases;
 
-    public Patient(String specialistName, String specialistSurname, String date, String diseases) {
-        this.specialistName = specialistName;
-        this.specialistSurname = specialistSurname;
+    /**
+     * Constructs Patient object
+     * @param patientName [String]    -   imię pacjenta
+     * @param patientSurname [String]    -   nazwisko pacjenta
+     * @param date [String]    -   data wizyty
+     * @param diseases [String]    -   choroby pacjenta
+     */
+    public Patient(String patientName, String patientSurname, String date, String diseases) {
+        this.specialistName = patientName;
+        this.specialistSurname = patientSurname;
         this.date = date;
         this.diseases = diseases;
     }
 
+    /**
+     * Constructs Patient object
+     * @param name [String]    -   imię pacjenta
+     * @param surname [String]    -   nazwisko pacjenta
+     * @param age [int]    -   wiek pacjenta
+     * @param phoneNumber [String]    -   numer telefonu pacjenta
+     * @param date [String]    -   data wizyty
+     * @param diseases [String]    -   choroby pacjenta
+     */
     public Patient(String name, String surname, int age, String phoneNumber, String date, String diseases) {
         this.name = name;
         this.surname = surname;

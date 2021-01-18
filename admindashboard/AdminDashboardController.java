@@ -30,6 +30,10 @@ public class AdminDashboardController implements Initializable {
     private Pane mainArea;
 
 
+    /**
+     * Metoda, ustawiająca początkowe dane na ekranie
+     * @see Exception
+     */
     public void setData() {
         try {
             con = DBManagment.connect();
@@ -50,11 +54,21 @@ public class AdminDashboardController implements Initializable {
         }
     }
 
+    /**
+     * Metoda, która wylogowuje użytkownika
+     * @param event [MouseEvent]    -   zdarzenie
+     * @see IOException
+     */
     public void logout(MouseEvent event) throws IOException {
         screen.logout(event);
     }
 
 
+    /**
+     * Metoda, przekierowująca użytkownika do okna "Dane o placówce"
+     * @param event [MouseEvent]    -   zdarzenie
+     * @see IOException
+     */
     @FXML
     private void information(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("InstitutionScreen.fxml"));
@@ -62,6 +76,11 @@ public class AdminDashboardController implements Initializable {
         mainArea.getChildren().addAll(fxml);
     }
 
+    /**
+     * Metoda, przekierowująca użytkownika do okna "Dodaj Specjalistę"
+     * @param event [MouseEvent]    -   zdarzenie
+     * @see IOException
+     */
     @FXML
     private void addSpecialist(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("AddSpecialist.fxml"));
@@ -69,6 +88,11 @@ public class AdminDashboardController implements Initializable {
         mainArea.getChildren().addAll(fxml);
     }
 
+    /**
+     * Metoda, przekierowująca użytkownika do okna "Usuń Specjalistę"
+     * @param event [MouseEvent]    -   zdarzenie
+     * @see IOException
+     */
     @FXML
     private void removeSpecialist(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("RemoveSpecialist.fxml"));
@@ -76,6 +100,11 @@ public class AdminDashboardController implements Initializable {
         mainArea.getChildren().addAll(fxml);
     }
 
+    /**
+     * Jest to główna metoda wykorzystująca metodę setData()
+     * @param location [URL]
+     * @param resources [ResourceBundle]
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setData();

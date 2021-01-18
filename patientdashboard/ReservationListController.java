@@ -39,6 +39,10 @@ public class ReservationListController implements Initializable {
     @FXML
     private TableColumn<Specialist, String> date;
 
+    /**
+     * Metoda, ustawiająca początkowe dane na ekranie
+     * @see Exception
+     */
     private void setData() {
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         surname.setCellValueFactory(new PropertyValueFactory<>("surname"));
@@ -68,6 +72,11 @@ public class ReservationListController implements Initializable {
     }
 
 
+    /**
+     * Jest to główna metoda wykorzystująca metodę setData()
+     * @param location [URL]
+     * @param resources [ResourceBundle]
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setData();

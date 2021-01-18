@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <ScrollPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admindashboard.RemoveSpecialistController">
    <content>
       <AnchorPane prefHeight="600.0" prefWidth="650.0">
@@ -17,9 +16,9 @@
                   <Font name="Impact" size="40.0" />
                </font>
             </Label>
-            <Label layoutX="78.0" layoutY="94.0" text="Wybiez specjalistę z listy, a następnie naciśnij przycisk, aby usunąć ">
+            <Label layoutX="75.0" layoutY="95.0" text="Wybiez specjalistę z listy, a następnie naciśnij przycisk, aby usunąć ">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Calibri" size="16.0" />
                </font>
             </Label>
             <ListView fx:id="specialistList" layoutX="75.0" layoutY="131.0" prefHeight="300.0" prefWidth="500.0" />

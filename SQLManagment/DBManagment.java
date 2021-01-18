@@ -9,6 +9,10 @@ public class DBManagment {
 
     public DBManagment() {}
 
+    /**
+     * Metoda, która nawiązuje połączenia z bazą danych
+     * @see SQLException
+     */
     public static Connection connect() {
         Connection conn = null;
         try {
@@ -21,6 +25,10 @@ public class DBManagment {
         return conn;
     }
 
+    /**
+     * Metoda, która zamyka połączenia z bazą danych
+     * @see SQLException
+     */
     public static void closeAll(Connection con, ResultSet res, PreparedStatement pst) {
         if (res != null) {
             try {

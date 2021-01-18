@@ -20,7 +20,7 @@
                   <Font size="40.0" />
                </font>
             </Label>
-            <Button layoutX="786.0" layoutY="11.0" mnemonicParsing="false" onMouseClicked="#logout" text="Wyloguj sie" />
+            <Button layoutX="786.0" layoutY="11.0" mnemonicParsing="false" onMouseClicked="#logout" text="Wyloguj się" />
          </children>
       </Pane>
       <Pane layoutY="100.0" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: #00c5e3;">

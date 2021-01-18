@@ -12,21 +12,21 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.LoginScreenController">
    <children>
-      <Pane prefHeight="700.0" prefWidth="250.0" style="-fx-background-color: #00c5e3;">
+      <Pane layoutY="-6.0" prefHeight="700.0" prefWidth="250.0" style="-fx-background-color: #00c5e3;">
          <children>
-            <Label layoutX="71.0" layoutY="61.0" text="Obsługa">
+            <Label layoutX="18.0" layoutY="51.0" text="Obsługa">
                <font>
-                  <Font name="Impact" size="32.0" />
+                  <Font name="Calibri Bold" size="32.0" />
                </font>
             </Label>
-            <Label layoutX="52.0" layoutY="101.0" text="przychodni">
+            <Label layoutX="18.0" layoutY="95.0" text="przychodni">
                <font>
-                  <Font name="Impact" size="32.0" />
+                  <Font name="Calibri Bold" size="32.0" />
                </font>
             </Label>
-            <Label layoutX="18.0" layoutY="141.0" text="specjalistycznej">
+            <Label layoutX="18.0" layoutY="139.0" text="specjalistycznej">
                <font>
-                  <Font name="Impact" size="32.0" />
+                  <Font name="Calibri Bold" size="28.0" />
                </font>
             </Label>
          </children>
@@ -35,7 +35,7 @@
          <children>
             <Label layoutX="247.0" layoutY="45.0" text="Witamy">
                <font>
-                  <Font name="Impact" size="50.0" />
+                  <Font name="Calibri Bold" size="50.0" />
                </font>
             </Label>
             <Label layoutX="96.0" layoutY="116.0" text="Zaloguj się poniżej, aby uzyskać dostęp do swojego konta">
@@ -50,12 +50,12 @@
             </Label>
             <Label layoutX="81.0" layoutY="319.0" text="Login">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Calibri" size="18.0" />
                </font>
             </Label>
             <Label layoutX="80.0" layoutY="373.0" text="Hasło">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Calibri" size="18.0" />
                </font>
             </Label>
             <Label layoutX="356.0" layoutY="524.0" text="Lub">
@@ -65,13 +65,16 @@
             </Label>
             <Label layoutX="41.0" layoutY="263.0" text="Numer telefonu">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Calibri" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="numberField" layoutX="221.0" layoutY="259.0" prefHeight="35.0" prefWidth="300.0" promptText="Numer telefonu (brak dla specjalisty oraz dyrektora)" />
+            <TextField fx:id="numberField" layoutX="221.0" layoutY="259.0" prefHeight="35.0" prefWidth="300.0" promptText="Numer telefonu (brak dla specjalisty oraz dyrektora)">
+               <font>
+                  <Font size="11.5" />
+               </font></TextField>
             <TextField fx:id="loginField" layoutX="221.0" layoutY="315.0" prefHeight="35.0" prefWidth="300.0" promptText="Login" />
             <PasswordField fx:id="passField" layoutX="221.0" layoutY="369.0" prefHeight="35.0" prefWidth="300.0" promptText="Haslo" />
-            <Button layoutX="271.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#loginAccount" prefHeight="40.0" prefWidth="200.0" text="Zaloguj sie" />
+            <Button layoutX="271.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#loginAccount" prefHeight="40.0" prefWidth="200.0" text="Zaloguj się" />
             <Button layoutX="271.0" layoutY="567.0" mnemonicParsing="false" onMouseClicked="#createAccount" prefHeight="40.0" prefWidth="200.0" text="Utwórz konto" />
             <RadioButton fx:id="patientBtn" layoutX="221.0" layoutY="417.0" mnemonicParsing="false" selected="true" text="Pacjent">
                <toggleGroup>

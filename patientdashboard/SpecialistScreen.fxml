@@ -19,14 +19,14 @@
                   <Font name="Impact" size="20.0" />
                </font>
             </Label>
-            <ComboBox fx:id="specialisationBox" layoutX="215.0" layoutY="20.0" prefHeight="35.0" prefWidth="300.0" />
+            <ComboBox fx:id="specialisationBox" layoutX="278.0" layoutY="20.0" prefHeight="35.0" prefWidth="300.0" />
             <Label layoutX="47.0" layoutY="70.0" text="Wybierz Dzień">
                <font>
                   <Font name="Impact" size="20.0" />
                </font>
             </Label>
-            <ComboBox fx:id="daysBox" layoutX="215.0" layoutY="64.0" prefHeight="35.0" prefWidth="300.0" />
-            <Button layoutX="332.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#searchSpecialist" text="Wyszukaj" />
+            <ComboBox fx:id="daysBox" layoutX="278.0" layoutY="64.0" prefHeight="35.0" prefWidth="300.0" />
+            <Button layoutX="395.0" layoutY="129.0" mnemonicParsing="false" onMouseClicked="#searchSpecialist" text="Wyszukaj" />
             <TableView fx:id="specialistTable" layoutX="15.0" layoutY="190.0" prefHeight="200.0" prefWidth="720.0">
               <columns>
                 <TableColumn fx:id="name" prefWidth="102.0" text="Imie" />

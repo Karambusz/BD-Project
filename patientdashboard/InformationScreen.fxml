@@ -26,12 +26,12 @@
                   <Font name="Impact" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="name" layoutX="237.0" layoutY="85.0" prefHeight="24.0" prefWidth="250.0" text="Default">
+            <Label fx:id="name" layoutX="282.0" layoutY="85.0" prefHeight="24.0" prefWidth="250.0" text="Default">
                <font>
                   <Font name="Impact" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="surname" layoutX="237.0" layoutY="121.0" prefHeight="24.0" prefWidth="250.0" text="Default">
+            <Label fx:id="surname" layoutX="282.0" layoutY="121.0" prefHeight="24.0" prefWidth="250.0" text="Default">
                <font>
                   <Font name="Impact" size="20.0" />
                </font>
@@ -41,7 +41,7 @@
                   <Font name="Impact" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="age" layoutX="236.0" layoutY="158.0" prefHeight="24.0" prefWidth="250.0" text="Default">
+            <Label fx:id="age" layoutX="282.0" layoutY="158.0" prefHeight="24.0" prefWidth="250.0" text="Default">
                <font>
                   <Font name="Impact" size="20.0" />
                </font>
@@ -51,7 +51,7 @@
                   <Font name="Impact" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="phoneNumber" layoutX="236.0" layoutY="198.0" prefHeight="24.0" prefWidth="250.0" text="Default">
+            <Label fx:id="phoneNumber" layoutX="282.0" layoutY="198.0" prefHeight="24.0" prefWidth="250.0" text="Default">
                <font>
                   <Font name="Impact" size="20.0" />
                </font>

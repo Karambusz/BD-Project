@@ -11,6 +11,16 @@ public class Specialist {
     private String street;
     private int number;
 
+    /**
+     * Constructs Specialist object
+     * @param name [String]    -   imię specjalisty
+     * @param surname [String]    -   nazwisko specjalisty
+     * @param specialization [String]    -   specjalizacja specjalisty
+     * @param street [String]    -   ulica na której znajduje się placówka
+     * @param office [int]    -   numer gabinetu
+     * @param price [int]    -   cena wizyty
+     * @param days [String]    -   dni pracy
+     */
     public Specialist(String name, String surname, String specialization,  String street, int office, int price, String days) {
         this.name = name;
         this.surname = surname;
@@ -21,6 +31,17 @@ public class Specialist {
         this.days = days;
     }
 
+    /**
+     * Constructs Specialist object
+     * @param name [String]    -   imię specjalisty
+     * @param surname [String]    -   nazwisko specjalisty
+     * @param city [String]    -   mejscowość
+     * @param street [String]    -   ulica na której znajduje się placówka
+     * @param number [int]    -   numer budynku
+     * @param office [int]    -   numer gabinetu
+     * @param price [int]    -   cena wizyty
+     *
+     */
     public Specialist(String name, String surname, String city, String street, int number, int office, int price) {
         this.name = name;
         this.surname = surname;
@@ -32,6 +53,15 @@ public class Specialist {
 
     }
 
+    /**
+     * Constructs Specialist object
+     * @param name [String]    -   imię specjalisty
+     * @param surname [String]    -   nazwisko specjalisty
+     * @param specialization [String]    -   specjalizacja specjalisty
+     * @param office [int]    -   numer gabinetu
+     * @param price [int]    -   cena wizyty
+     * @param days [String]    -   dni pracy
+     */
     public Specialist(String name, String surname, String specialization, int office, int price, String days) {
         this.name = name;
         this.surname = surname;
@@ -42,7 +72,14 @@ public class Specialist {
     }
 
 
-
+    /**
+     * Constructs Specialist object
+     * @param name [String]    -   imię specjalisty
+     * @param surname [String]    -   nazwisko specjalisty
+     * @param specialization [String]    -   specjalizacja specjalisty
+     * @param office [int]    -   numer gabinetu
+     * @param price [int]    -   cena wizyty
+     */
     public Specialist(String name, String surname, String specialization, int office, int price) {
         this.name = name;
         this.surname = surname;

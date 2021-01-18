@@ -15,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import login.LoginScreenController;
 import users.Specialist;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -45,6 +46,10 @@ public class InstitutionScreenController implements Initializable {
     @FXML
     private TableColumn<Specialist, Integer> price;
 
+    /**
+     * Metoda, ustawiająca początkowe dane na ekranie
+     * @see Exception
+     */
     private void setData() {
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         surname.setCellValueFactory(new PropertyValueFactory<>("surname"));
@@ -83,6 +88,12 @@ public class InstitutionScreenController implements Initializable {
         specialistTable.setItems(list);
     }
 
+    /**
+     * Metoda, dodająca numer gabinetu do bazy
+     * @param event [MouseEvent]    -   zdarzenie
+     * @see IOException
+     * @see SQLException
+     */
     @FXML
     private void addOffice(MouseEvent event) {
         try {
@@ -111,6 +122,11 @@ public class InstitutionScreenController implements Initializable {
 
     }
 
+    /**
+     * Jest to główna metoda wykorzystująca metodę setData() oraz ustawia ograniczenia dla wybranego pola
+     * @param location [URL]
+     * @param resources [ResourceBundle]
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         officeField.textProperty().addListener((observable, oldValue, newValue) -> {

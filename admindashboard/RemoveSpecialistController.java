@@ -23,6 +23,10 @@ public class RemoveSpecialistController implements Initializable {
     @FXML
     private ListView<String> specialistList;
 
+    /**
+     * Metoda, ustawiająca początkowe dane na ekranie
+     * @see Exception
+     */
     private void setData() {
         ObservableList<String> list = FXCollections.observableArrayList();
         try {
@@ -43,6 +47,11 @@ public class RemoveSpecialistController implements Initializable {
         specialistList.setItems(list);
     }
 
+    /**
+     * Metoda, usuwająca specjalistę z bazy
+     *      @param event [MouseEvent]    -   zdarzenie
+     *      @see Exception
+     */
     @FXML
     private void removeSpecialist(MouseEvent event) {
         try {
@@ -50,7 +59,7 @@ public class RemoveSpecialistController implements Initializable {
                 System.out.println(specialistList.getSelectionModel().getSelectedItem());
                 throw new Exception();
             }
-            String tmp[] = specialistList.getSelectionModel().getSelectedItem().split(" ");
+            String[] tmp = specialistList.getSelectionModel().getSelectedItem().split(" ");
             for (String a: tmp) {
                 System.out.println(a);
             }
@@ -87,6 +96,11 @@ public class RemoveSpecialistController implements Initializable {
 
     }
 
+    /**
+     * Jest to główna metoda wykorzystująca metodę setData()
+     * @param location [URL]
+     * @param resources [ResourceBundle]
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setData();

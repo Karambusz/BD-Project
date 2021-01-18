@@ -48,6 +48,10 @@ public class VisitList implements Initializable {
     private ComboBox<String> diseasesList;
 
 
+    /**
+     * Metoda, ustawiająca początkowe dane na ekranie
+     * @see Exception
+     */
     private void setData() {
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         surname.setCellValueFactory(new PropertyValueFactory<>("surname"));
@@ -87,6 +91,10 @@ public class VisitList implements Initializable {
         visitTable.setItems(list);
     }
 
+    /**
+     * Metoda, uzupełniająca listę chorób
+     * @see Exception
+     */
     private void setDiseases() {
         try {
             con = DBManagment.connect();
@@ -104,6 +112,12 @@ public class VisitList implements Initializable {
         }
     }
 
+    /**
+     * Metoda pozwalająca na dodanie wpisu do historii choroby i uzupełnienie tabeli po dodaniu
+     * @param event [MouseEvent]
+     * @see SQLException
+     * @see Exception
+     */
     @FXML
     private void addNote(MouseEvent event) {
         try{
@@ -170,7 +184,11 @@ public class VisitList implements Initializable {
     }
 
 
-
+    /**
+     * Jest to główna metoda wykorzystująca metodę setData() oraz setDiseases()
+     * @param location [URL]
+     * @param resources [ResourceBundle]
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setDiseases();

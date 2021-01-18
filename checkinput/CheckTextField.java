@@ -3,10 +3,16 @@ package checkinput;
 import alerts.AlertBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class CheckTextField {
 
+    /**
+     * Funkcja, która sprawdza poprawność wprowadzonego imienia lub nazwiska
+     *      @param tmpField [TextField]    -   pole z którego pobieramy tekst
+     *      @return  [boolean]
+     */
     public static boolean checkFullnameField(TextField tmpField) {
         if (tmpField.getText().equals("")) {
             AlertBox.errorAlert("Puste pole!", "Puste pole, wprowadź dane");
@@ -25,6 +31,11 @@ public class CheckTextField {
 
     }
 
+    /**
+     * Funkcja, która sprawdza poprawność wprowadzonego wieku
+     *      @param tmpField [TextField]    -   pole z którego pobieramy tekst
+     *      @return  [boolean]
+     */
     public static boolean checkAgeField(TextField tmpField) {
         if(tmpField.getText().equals("")) {
             AlertBox.errorAlert("Puste pole!", "Puste pole, wprowadź dane");
@@ -42,6 +53,11 @@ public class CheckTextField {
         }
     }
 
+    /**
+     * Funkcja sprawdzająca poprawność pól numerycznych
+     *      @param tmpField [TextField]    -   pole z którego pobieramy tekst
+     *      @return  [boolean]
+     */
     public static boolean checkNumberField(TextField tmpField) {
         Pattern p = Pattern.compile("[0-9]+");
         Matcher m = p.matcher(tmpField.getText());
@@ -54,6 +70,11 @@ public class CheckTextField {
         }
     }
 
+    /**
+     * Funkcja sprawdzająca poprawność loginu
+     *      @param tmpField [TextField]    -   pole z którego pobieramy tekst
+     *      @return  [boolean]
+     */
     public static boolean checkLogin(TextField tmpField) {
         if (tmpField.getText().equals("")) {
             AlertBox.errorAlert("Brak tekstu w pole login", "Wpisz swój login");
@@ -62,6 +83,11 @@ public class CheckTextField {
         return true;
     }
 
+    /**
+     * Funkcja sprawdzająca poprawność hasła
+     *      @param tmpField [PasswordField]    -   pole z którego pobieramy tekst
+     *      @return  [boolean]
+     */
     public static boolean checkPass(PasswordField tmpField) {
         if (tmpField.getText().equals("")) {
             AlertBox.errorAlert("Brak tekstu w pole hasło", "Wpisz swoje hasło");

@@ -50,6 +50,10 @@ public class HospitalScreenController implements Initializable {
     private DatePicker dob;
 
 
+    /**
+     * Metoda, ustawiająca początkowe dane na ekranie
+     * @see Exception
+     */
     private void setData() {
         try {
             con = DBManagment.connect();
@@ -68,6 +72,11 @@ public class HospitalScreenController implements Initializable {
         }
     }
 
+    /**
+     * Metoda, która generuje listę specjalistów w zalezności od wybranej placówki
+     *      @param event [MouseEvent]    -   zdarzenie
+     *      @see Exception
+     */
     @FXML
     private void searchSpecialist(MouseEvent event) {
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -124,6 +133,11 @@ public class HospitalScreenController implements Initializable {
 
     }
 
+    /**
+     * Metoda, która pozwala zarezerwować wizytę u wybranego specjalisty
+     *      @see NullPointerException
+     *      @see SQLException
+     */
     @FXML
     private void reserve(MouseEvent event) {
         try {
@@ -208,6 +222,11 @@ public class HospitalScreenController implements Initializable {
         }
     }
 
+    /**
+     * Jest to główna metoda wykorzystująca metodę setData() oraz synhronizuje kalendarz z lokalnym czasem
+     * @param location [URL]
+     * @param resources [ResourceBundle]
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setData();

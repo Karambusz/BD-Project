@@ -45,6 +45,14 @@ public class LoginScreenController implements Initializable {
     private RadioButton managerBtn;
 
 
+    /**
+     * Funkcja, która sprawdza mozliwość logowania pacjenta do aplikacji
+     *      @param number [String]    -   numer pacjenta
+     *      @param login [String]    -   login
+     *      @param pass [String]    -   hasło
+     *      @return  [boolean]
+     *      @see SQLException
+     */
     public boolean checkPatientLoginData(String number, String login, String pass) {
         try {
             con = DBManagment.connect();
@@ -67,6 +75,13 @@ public class LoginScreenController implements Initializable {
         return false;
     }
 
+    /**
+     * Funkcja, która sprawdza mozliwość logowania specjalisty do aplikacji
+     *      @param login [String]    -   login
+     *      @param pass [String]    -   hasło
+     *      @return  [boolean]
+     *      @see SQLException
+     */
     public boolean checkSpecialitLoginData(String login, String pass) {
         try {
             con = DBManagment.connect();
@@ -88,6 +103,13 @@ public class LoginScreenController implements Initializable {
         return false;
     }
 
+    /**
+     * Funkcja, która sprawdza mozliwość logowania dyrektora do aplikacji
+     *      @param login [String]    -   login
+     *      @param pass [String]    -   hasło
+     *      @return  [boolean]
+     *      @see SQLException
+     */
     public boolean checkManagerLoginData(String login, String pass) {
         try {
             con= DBManagment.connect();
@@ -109,6 +131,11 @@ public class LoginScreenController implements Initializable {
         return false;
     }
 
+    /**
+     * Funkcja która loguje uzytkownika w zalezności od wybranej roli
+     *      @param event [MouseEvent]    -   zdarzenie
+     *      @see Exception
+     */
     public void loginAccount(MouseEvent event) throws IOException{
         String number = numberField.getText();
         String login = loginField.getText();
@@ -182,6 +209,11 @@ public class LoginScreenController implements Initializable {
         }
     }
 
+    /**
+     * Metoda, przekierowująca użytkownika do okna Rejestracji konta
+     * @param event [MouseEvent]    -   zdarzenie
+     * @see IOException
+     */
     @FXML
     private void createAccount(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("/createaccount/CreateAccount.fxml"));
@@ -192,6 +224,10 @@ public class LoginScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        numberField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                numberField.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
     }
 }

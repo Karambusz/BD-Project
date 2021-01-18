@@ -30,6 +30,11 @@ public class PatientDashboardController implements Initializable {
     @FXML
     private Pane mainArea;
 
+
+    /**
+     * Metoda, ustawiająca początkowe dane na ekranie
+     * @see Exception
+     */
     public void setData() {
         try {
             con = DBManagment.connect();
@@ -39,7 +44,7 @@ public class PatientDashboardController implements Initializable {
             res = pst.executeQuery();
 
             if(res.next()) {
-                StringBuffer tmp = new StringBuffer();
+                StringBuilder tmp = new StringBuilder();
                 tmp.append(res.getString("imie")).append(" ").append(res.getString("nazwisko"));
                 nameLabel.setText(tmp.toString());
             }
@@ -58,11 +63,20 @@ public class PatientDashboardController implements Initializable {
             System.out.println(e.getMessage());
         }
     }
-
+    /**
+     * Metoda, która wylogowuje użytkownika
+     * @param event [MouseEvent]    -   zdarzenie
+     * @see IOException
+     */
     public void logout(MouseEvent event) throws IOException {
         screen.logout(event);
     }
 
+    /**
+     * Metoda, przekierowująca użytkownika do okna "Moje dane"
+     * @param event [MouseEvent]    -   zdarzenie
+     * @see IOException
+     */
     @FXML
     private void information(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("InformationScreen.fxml"));
@@ -70,6 +84,11 @@ public class PatientDashboardController implements Initializable {
         mainArea.getChildren().addAll(fxml);
     }
 
+    /**
+     * Metoda, przekierowująca użytkownika do okna "Placówki"
+     * @param event [MouseEvent]    -   zdarzenie
+     * @see IOException
+     */
     @FXML
     private void hospitals(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("HospitalScreen.fxml"));
@@ -77,12 +96,23 @@ public class PatientDashboardController implements Initializable {
         mainArea.getChildren().addAll(fxml);
     }
 
+    /**
+     * Metoda, przekierowująca użytkownika do okna "Specjaliści"
+     * @param event [MouseEvent]    -   zdarzenie
+     * @see IOException
+     */
     @FXML
     private void specialists(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("SpecialistScreen.fxml"));
         mainArea.getChildren().removeAll();
         mainArea.getChildren().addAll(fxml);
     }
+
+    /**
+     * Metoda, przekierowująca użytkownika do okna "Moje rezerwacje"
+     * @param event [MouseEvent]    -   zdarzenie
+     * @see IOException
+     */
     @FXML
     private void reservations(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("ReservationList.fxml"));
@@ -90,6 +120,11 @@ public class PatientDashboardController implements Initializable {
         mainArea.getChildren().addAll(fxml);
     }
 
+    /**
+     * Metoda, konwertujaca dzień do indeksu pod którym dzień jest zapisany w bazie danych
+     * @param day [String]
+     * @return  [int]    -   indeks
+     */
     public static int convertDay(String day) {
         int res = 0;
         switch (day) {
@@ -118,6 +153,11 @@ public class PatientDashboardController implements Initializable {
         return res;
     }
 
+    /**
+     * Jest to główna metoda wykorzystująca metodę setData()
+     * @param location [URL]
+     * @param resources [ResourceBundle]
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setData();

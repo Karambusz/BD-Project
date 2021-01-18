@@ -30,6 +30,10 @@ public class SpecialistDashboardController implements Initializable {
     public static String specialistName;
     public static String specialistSurname;
 
+    /**
+     * Metoda, ustawiająca początkowe dane na ekranie
+     * @see Exception
+     */
     private void setData() {
         try {
             con = DBManagment.connect();
@@ -53,6 +57,11 @@ public class SpecialistDashboardController implements Initializable {
         }
     }
 
+    /**
+     * Metoda, przekierowująca użytkownika do okna "Lista wizyt"
+     * @param event [MouseEvent]    -   zdarzenie
+     * @see IOException
+     */
     @FXML
     private void visitList(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("VisitList.fxml"));
@@ -60,6 +69,11 @@ public class SpecialistDashboardController implements Initializable {
         mainArea.getChildren().addAll(fxml);
     }
 
+    /**
+     * Metoda, przekierowująca użytkownika do okna "Zmień hasło"
+     * @param event [MouseEvent]    -   zdarzenie
+     * @see IOException
+     */
     @FXML
     private void changePass(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("ChangePIN.fxml"));
@@ -67,10 +81,20 @@ public class SpecialistDashboardController implements Initializable {
         mainArea.getChildren().addAll(fxml);
     }
 
+    /**
+     * Metoda, która wylogowuje użytkownika
+     * @param event [MouseEvent]    -   zdarzenie
+     * @see IOException
+     */
     public void logout(MouseEvent event) throws IOException {
         screen.logout(event);
     }
 
+    /**
+     * Jest to główna metoda wykorzystująca metodę setData()
+     * @param location [URL]
+     * @param resources [ResourceBundle]
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setData();

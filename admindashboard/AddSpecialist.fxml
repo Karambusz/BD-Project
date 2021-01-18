@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <ScrollPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admindashboard.AddSpecialistController">
    <content>
       <AnchorPane prefHeight="600.0" prefWidth="650.0">
@@ -25,20 +24,20 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="nameField" layoutX="175.0" layoutY="110.0" prefHeight="35.0" prefWidth="300.0" promptText="Imię" />
-            <TextField fx:id="surnameField" layoutX="175.0" layoutY="165.0" prefHeight="35.0" prefWidth="300.0" promptText="Nazwisko" />
+            <TextField fx:id="nameField" layoutX="200.0" layoutY="110.0" prefHeight="35.0" prefWidth="300.0" promptText="Imię" />
+            <TextField fx:id="surnameField" layoutX="200.0" layoutY="165.0" prefHeight="35.0" prefWidth="300.0" promptText="Nazwisko" />
             <Label layoutX="79.0" layoutY="169.0" text="Nazwisko">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ComboBox fx:id="specialisationBox" layoutX="175.0" layoutY="223.0" prefHeight="35.0" prefWidth="300.0" promptText="Specjalizacja" />
+            <ComboBox fx:id="specialisationBox" layoutX="200.0" layoutY="223.0" prefHeight="35.0" prefWidth="300.0" promptText="Specjalizacja" />
             <Label layoutX="67.0" layoutY="227.0" text="Specjalizacja">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="priceField" layoutX="175.0" layoutY="282.0" prefHeight="35.0" prefWidth="300.0" promptText="Cena wizyty" />
+            <TextField fx:id="priceField" layoutX="200.0" layoutY="282.0" prefHeight="35.0" prefWidth="300.0" promptText="Cena wizyty" />
             <Label layoutX="70.0" layoutY="286.0" text="Cena wizyty">
                <font>
                   <Font size="18.0" />
@@ -56,13 +55,13 @@
             </Label>
             <CheckBox fx:id="saturday" layoutX="403.0" layoutY="414.0" mnemonicParsing="false" text="Sob" />
             <CheckBox fx:id="sunday" layoutX="469.0" layoutY="414.0" mnemonicParsing="false" text="Niedż" />
-            <ComboBox fx:id="officeBox" layoutX="175.0" layoutY="331.0" prefHeight="35.0" prefWidth="300.0" promptText="Numer Gabinetu" />
+            <ComboBox fx:id="officeBox" layoutX="200.0" layoutY="331.0" prefHeight="35.0" prefWidth="300.0" promptText="Numer Gabinetu" />
             <Label layoutX="86.0" layoutY="335.0" text="Gabinet">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="loginField" layoutX="169.0" layoutY="447.0" prefHeight="35.0" prefWidth="300.0" promptText="Login" />
+            <TextField fx:id="loginField" layoutX="206.0" layoutY="447.0" prefHeight="35.0" prefWidth="300.0" promptText="Login" />
             <Label layoutX="95.0" layoutY="451.0" text="Login">
                <font>
                   <Font size="18.0" />
@@ -73,8 +72,8 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="219.0" layoutY="539.0" mnemonicParsing="false" onMouseClicked="#addSpecialistToBaze" prefHeight="40.0" prefWidth="200.0" text="Dodaj" />
-            <PasswordField fx:id="passwordField" layoutX="169.0" layoutY="491.0" prefHeight="35.0" prefWidth="300.0" promptText="Hasło" />
+            <Button layoutX="250.0" layoutY="537.0" mnemonicParsing="false" onMouseClicked="#addSpecialistToBaze" prefHeight="40.0" prefWidth="200.0" text="Dodaj" />
+            <PasswordField fx:id="passwordField" layoutX="206.0" layoutY="491.0" prefHeight="35.0" prefWidth="300.0" promptText="Hasło" />
          </children>
       </AnchorPane>
    </content>

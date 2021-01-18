@@ -55,6 +55,11 @@ public class AddSpecialistController implements Initializable {
     @FXML
     private PasswordField passwordField;
 
+
+    /**
+     * Metoda, ustawiająca początkowe dane na ekranie
+     * @see Exception
+     */
     private void setData() {
         ObservableList<String> specializeList = FXCollections.observableArrayList("Psychoterapeuta", "Diagnostyk", "Neurolog", "Dermatolog", "Laryngolog");
         officeBox.getItems().clear();
@@ -76,6 +81,18 @@ public class AddSpecialistController implements Initializable {
         }
     }
 
+    /**
+     * Funkcja, która sprawdza mozliwość dodania specjalisty do bazy
+     *      @param name [String]    -   imię specjalisty
+     *      @param surname [String]    -   nazwisko specjalisty
+     *      @param price [int]    -   cena wizyty
+     *      @param login [String]    -   login
+     *      @param pass [String]    -   hasło
+     *      @param officeN [int]    -   numer gabinetu
+     *      @param hospitalN [int]    -   id placówki
+     *      @return  [boolean]
+     *      @see SQLException
+     */
     @FXML
     private boolean checkAdd(String name, String surname, String spec, int price,  String login, String pass, int officeN, int hospitalN) {
         try {
@@ -105,6 +122,11 @@ public class AddSpecialistController implements Initializable {
         return false;
     }
 
+    /**
+     * Metoda, dodająca specjalistę do bazy
+     *      @param event [MouseEvent]    -   zdarzenie
+     *      @see Exception
+     */
     @FXML
     private void addSpecialistToBaze(MouseEvent event) {
         try {
@@ -216,9 +238,18 @@ public class AddSpecialistController implements Initializable {
     }
 
 
-
+    /**
+     * Jest to główna metoda wykorzystująca metodę setData()
+     * @param location [URL]
+     * @param resources [ResourceBundle]
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setData();
+        priceField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                priceField.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
     }
 }
